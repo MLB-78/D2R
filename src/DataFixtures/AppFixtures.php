@@ -20,13 +20,16 @@ class AppFixtures extends Fixture
         }
         fclose($fichierArtisteCsv);
 
-        foreach ($lesArtisteCsv as $value) {
+        $genres=["men","women"];
+        foreach ($lesArtistes as $value) {
             $artiste=new Artiste();
             $artiste    ->setId(intval($value[0]))
                         ->setNom($value[1])
-                        ->setDescription("<p>". join("</p><p>",$faker->paragraphs(5))) ."</p>"
+                        ->setDescription("<p>". join("</p><p>",$faker->paragraphs(5)) ."</p>")
                         ->setSite($faker->url())
-                        ->setImage('https:randomuser.me/api/portraits')
+                        ->setImage('https:randomuser.me/api/portraits/'.$faker->randomElement($genres)."/".mt_rand(1,99).".jpg")
+                        ->setType($value[2]);
+            $manager->persist($artiste);
         }
         $manager->flush();
     }
