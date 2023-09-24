@@ -3,7 +3,9 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
+use App\Entity\Album;
 use App\Entity\Artiste;
+use App\Entity\Morceau;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -12,25 +14,68 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
        
-        $faker=Factory::create("fr_FR");
+        // $faker=Factory::create("fr_FR");
 
-        $fichierArtisteCsv=fopen(__DIR__."/artiste.csv","r");
-        while(!feof($fichierArtisteCsv)){
-            $lesArtistes[]=fgetcsv($fichierArtisteCsv);
-        }
-        fclose($fichierArtisteCsv);
+        // // Artiste
+        // $lesArtistes=$this->chargeFichier('artiste.csv');
+        // $genres=["men","women"];
+        // foreach ($lesArtistes as $value) {
+        //     $artiste=new Artiste();
+        //     $artiste    ->setId(intval($value[0]))
+        //                 ->setNom($value[1])
+        //                 ->setDescription("<p>". join("</p><p>",$faker->paragraphs(5)) ."</p>")
+        //                 ->setSite($faker->url())
+        //                 ->setImage('https:randomuser.me/api/portraits/'.$faker->randomElement($genres)."/".mt_rand(1,99).".jpg")
+        //                 ->setType($value[2]);
+        //     $manager->persist($artiste);
+        //     $manager->flush();
+        //     //  dd("artiste".$artiste->getId());
+        //     $this->addReference("artiste".$value[0],$artiste);
+        // }
 
-        $genres=["men","women"];
-        foreach ($lesArtistes as $value) {
-            $artiste=new Artiste();
-            $artiste    ->setId(intval($value[0]))
-                        ->setNom($value[1])
-                        ->setDescription("<p>". join("</p><p>",$faker->paragraphs(5)) ."</p>")
-                        ->setSite($faker->url())
-                        ->setImage('https:randomuser.me/api/portraits/'.$faker->randomElement($genres)."/".mt_rand(1,99).".jpg")
-                        ->setType($value[2]);
-            $manager->persist($artiste);
-        }
+        // // Album
+        // $lesAlbums = $this->chargeFichier('album.csv');
+        // foreach ($lesAlbums as $value) {
+        //     $album = new Album();
+        //     $album
+        //         ->setId(intval($value[0]))
+        //         ->setNom($value[1])
+        //         ->setDate(intval($value[2]))
+        //         ->setImage($faker->imageUrl(640, 480))
+        //         ->setArtiste($this->getReference("artiste" . $value[4]));
+        //     $manager->persist($album);
+        //     $manager->flush();
+        //     $this->addReference('album' . $album->getId(), $album);
+        // }
+
+
+        // // Morceaux
+        // $lesMorceaux=$this->chargeFichier('morceau.csv');
+        // foreach($lesMorceaux as $value){
+        //     $morceau = new Morceau();
+        //     $morceau ->setId(intval($value[0]))
+        //            ->setTitre($value[2])  
+        //            ->setAlbum($this->getReference("album".$value[1]))
+        //            ->setDuree(date('i:s',$value[3]));
+        //         $manager->persist($morceau);
+        //         $manager->flush();
+        //         $this->addReference('morceau'.$morceau->getId(),$morceau);
+        // }
+
+
         $manager->flush();
+    }
+
+    // Pour charger les fichier csv
+    public function chargeFichier($fichier){
+
+        
+        $fichierCsv=fopen(__DIR__."/".$fichier,"r");
+        while(!feof($fichierCsv)){
+            $data[]=fgetcsv($fichierCsv);
+        }
+        fclose($fichierCsv);
+        return $data;
+
     }
 }
