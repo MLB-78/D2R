@@ -1,0 +1,24 @@
+body{
+
+    background-color: brown;
+
+}
+/* Jumbotron */
+.example-wrapper { 
+    margin: 1em auto; 
+    max-width: 800px; 
+    width: 95%; 
+    font: 18px/1.5 
+    sans-serif; 
+}
+
+.jumbotron{
+    background-color: whitesmoke;
+    color: black;
+    width: 65%; 
+    margin: auto; 
+    padding:15px;
+}
+h1{
+    color:rgb(0, 0, 0);
+}
