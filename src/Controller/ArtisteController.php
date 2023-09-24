@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ArtisteController extends AbstractController
-{
+{ 
     /**
      * @Route("/artistes", name="artistes",mathodes={Get})
      */
@@ -19,3 +19,4 @@ class ArtisteController extends AbstractController
         ]);
     }
 }
+ 
