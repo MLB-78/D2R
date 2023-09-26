@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Artiste;
 use App\Repository\ArtisteRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,6 +18,17 @@ class ArtisteController extends AbstractController
         $artistes=$repo->findAll();
         return $this->render('artiste/listeArtiste.html.twig', [
             'lesArtistes'=> $artistes
+        ]);
+    }
+
+     /**
+     * @Route("/artiste/{id}", name="ficheArtiste",methods={"GET"})
+     */
+    public function ficheArtiste(Artiste $artiste)
+    {
+        // $artiste=$repo->findOneById($id);
+        return $this->render('artiste/ficheArtiste.html.twig', [
+            'leArtiste'=> $artiste
         ]);
     }
 }

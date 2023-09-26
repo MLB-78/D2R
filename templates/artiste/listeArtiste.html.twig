@@ -12,7 +12,8 @@
         
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl">
                 <div class="card mb-3">
-            <h3 class="card-header" style="color:red"> {{leArtiste.nom}} </h3>
+                <h3 class="card-header" style="color:red"> <a href="{{ path('ficheArtiste', {'id': leArtiste.id })}}">{{ leArtiste.nom }}</a> </h3>
+
             <div class="card-body">
 
                 <h5 class="card-title"> 
