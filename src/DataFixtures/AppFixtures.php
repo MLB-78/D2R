@@ -4,17 +4,39 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\Album;
+use App\Entity\Style;
 use App\Entity\Artiste;
 use App\Entity\Morceau;
+use App\Repository\AlbumRepository;
+use App\Repository\StyleRepository;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class AppFixtures extends Fixture
 {
+    private $repo;
+    private $repoStyle;
+    public function __construct(AlbumRepository $repository, StyleRepository $repostyle)
+    {
+        $this->repo=$repository;
+        $this->repoStyle=$repostyle;
+    }
     public function load(ObjectManager $manager): void
     {
-       
-        // $faker=Factory::create("fr_FR");
+        $styles=$this->repoStyle->findAll();
+        foreach ($styles as $style) {
+            $this->addReference('style' . $style->getId(), $style);
+        }
+
+        $albums=$this->repo->findAll();
+        foreach($albums as $album)
+        {
+         $album->addStyle($this->getReference("style" . mt_rand(1,17)));
+         $manager->persist($album);
+        }
+        $manager->flush();
+    
+
 
         // // Artiste
         // $lesArtistes=$this->chargeFichier('artiste.csv');
@@ -33,7 +55,7 @@ class AppFixtures extends Fixture
         //     $this->addReference("artiste".$value[0],$artiste);
         // }
 
-        // // Album
+        // Album
         // $lesAlbums = $this->chargeFichier('album.csv');
         // foreach ($lesAlbums as $value) {
         //     $album = new Album();
@@ -42,11 +64,13 @@ class AppFixtures extends Fixture
         //         ->setNom($value[1])
         //         ->setDate(intval($value[2]))
         //         ->setImage($faker->imageUrl(640, 480))
+        //         ->addStyle($this->getReference("style" . $value[3]))
         //         ->setArtiste($this->getReference("artiste" . $value[4]));
         //     $manager->persist($album);
         //     $manager->flush();
         //     $this->addReference('album' . $album->getId(), $album);
         // }
+        
 
 
         // // Morceaux
@@ -60,7 +84,7 @@ class AppFixtures extends Fixture
         //         $manager->persist($morceau);
         //         $manager->flush();
         //         $this->addReference('morceau'.$morceau->getId(),$morceau);
-        // }
+        // 
 
 
         $manager->flush();
@@ -78,4 +102,5 @@ class AppFixtures extends Fixture
         return $data;
 
     }
+
 }
