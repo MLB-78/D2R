@@ -57,13 +57,14 @@
   
     <tr class="table-active">
 
-      <td scope="row">  </td>
+      <td scope="row">{{ leMorceau.piste }}</td>
       <td>{{leMorceau.titre}}</td>
       <td>{{leMorceau.duree}}</td>
-      <td>{{leMorceau.duree}}</td>
+
 
     </tr>
   {% endfor %}
+{{ dump(leAlbum.morceaux) }}
   </tbody>
 </table>
 
