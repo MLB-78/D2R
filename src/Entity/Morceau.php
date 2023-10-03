@@ -28,10 +28,15 @@ class Morceau
     private $duree;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Album::class, inversedBy="morceaux")
+     * @ORM\ManyToOne(targetEntity=Album::class, inversedBy="morceaux" , cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $album;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $piste;
 
 
     public function getId(): ?int
@@ -78,6 +83,18 @@ class Morceau
     public function setAlbum(?Album $album): self
     {
         $this->album = $album;
+
+        return $this;
+    }
+
+    public function getPiste(): ?int
+    {
+        return $this->piste;
+    }
+
+    public function setPiste(int $piste): self
+    {
+        $this->piste = $piste;
 
         return $this;
     }

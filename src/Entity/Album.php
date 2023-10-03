@@ -35,13 +35,13 @@ class Album
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Artiste::class, inversedBy="albums")
+     * @ORM\ManyToOne(targetEntity=Artiste::class, inversedBy="albums", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $artiste;
 
     /**
-     * @ORM\OneToMany(targetEntity=Morceau::class, mappedBy="album")
+     * @ORM\OneToMany(targetEntity=Morceau::class, mappedBy="album", cascade={"persist"})
      */
     private $morceaux;
 
