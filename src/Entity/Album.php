@@ -111,7 +111,6 @@ class Album
     public function setArtiste(?Artiste $artiste): self
     {
         $this->artiste = $artiste;
-
         return $this;
     }
 
