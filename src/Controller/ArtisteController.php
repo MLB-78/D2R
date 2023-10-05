@@ -15,7 +15,7 @@ class ArtisteController extends AbstractController
      */
     public function listeArtistes(ArtisteRepository $repo)
     {
-        $artistes=$repo->findAll();
+        $artistes=$repo->listeArtistesComplete();
         return $this->render('artiste/listeArtiste.html.twig', [
             'lesArtistes'=> $artistes
         ]);
