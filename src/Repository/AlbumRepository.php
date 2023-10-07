@@ -21,6 +21,7 @@ class AlbumRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Album::class);
     }
+    
 
     public function add(Album $entity, bool $flush = false): void
     {
@@ -39,6 +40,8 @@ class AlbumRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    
 
    /**
     * @return Album[] Returns an array of Album objects

@@ -63,7 +63,7 @@ class Album
 
     public function setId(int $id): self
     {
-        $this->$id = $id;
+        $this->id = $id;
 
         return $this;
     }
