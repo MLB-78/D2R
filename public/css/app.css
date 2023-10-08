@@ -1,6 +1,6 @@
 body{
 
-    background-color: brown;
+    background-color: rgb(13, 177, 210);
 
 }
 /* Jumbotron */
@@ -30,9 +30,25 @@ h1{
 
 }
 
-/* .navi{
 
-    background-color: beige;
-    margin: auto;
+hr{
 
-} */
+    height: 20px;
+    background-color: black;
+
+}
+
+.pagination{
+
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: center;
+
+}
+
+#btn{
+
+    border-radius: 4px;
+    flex-grow: 1;
+}

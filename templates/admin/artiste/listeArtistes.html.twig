@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion Artistes{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1 class="pt-2 text-center" style="color:white">Gestion des artistes</h1>
+    <div class="d-flex justify-content-end">
+    <a href="#" class="btn btn-success" style="border-radius: 4px;">
+        <img src="{{ asset('icone/ajout.png') }}" style="width: 27px" class="mr-2"> Ajouter un artiste
+    </a>
+</div>
+
+
+    <hr>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th scope="col-1"></th>
+            <th scope="col-2">Nom</th>
+            <th scope="col-7">Détail</th>
+            <th scope="col-2">Actions</th>
+            </tr>
+        </thead>
+
+        {% for leArtiste in lesArtistes %}
+        {% set nbAlbums = leArtiste.albums|length %}
+        
+            <tbody>
+                <tr>
+                    <td class="col-1"><img class"mx-auto d-block" style="border-radius: 60%;height:auto; width:100px; margin:auto; display:block;" src="{{leArtiste.image}}" alt="Card image"></td>
+                    <td class="col-2">{{ leArtiste.nom }}</td>
+                    <td class="col-7">
+                        <p class="d-flex flex-row">
+                            <span class="align-self-center badge badge-success" style="color:blue">{{nbAlbums}} {% if nbAlbums>1 %} albums {% else %} album {% endif %}</span>
+                            <span class="align-self-center mx-3">{% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe {% endif %}</span>
+                            <span class="align-self-center ml-auto">{{leArtiste.site}}</span>
+                        </p>
+                        <p>
+                            {{leArtiste.description|slice(0,100)|raw}}
+                        </p>
+                    </td>
+                    <td class="col-2">
+                        <div class="d-flex justify-content-between">
+                            <a href="#" class="btn btn-info" id="btn">
+                                <img src="{{ asset('icone/modif.png') }}" style="width: 27px">
+                            </a>
+                            &nbsp;
+                            <a href="#" class="btn btn-danger" id="btn" data-toogle="modalSimple" data-target="#exampleModal">
+                                <img src="{{ asset('icone/supp.png') }}" style="width: 27px">
+                            </a>
+                        </div>
+                    </td>
+
+                </tr>
+            
+        {% endfor %}
+            </tbody>
+    </table>
+
+    <div class="navi text-center mt-3 mb-3">
+            {{ knp_pagination_render(lesArtistes) }}
+        </div>
+</div>
+{% endblock %}

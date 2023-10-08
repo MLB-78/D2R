@@ -17,16 +17,16 @@
             <div class="card-body">
 
                 <h5 class="card-title"> 
-                <a href="" style='color:red;font-weight: bold;'class="badge badge-success">{{nbAlbums}} {% if nbAlbums>1 %} albums {% else %} album {% endif %} </a>
+                <a href="" style='color:blue;font-weight: bold;'class="badge badge-success">{{nbAlbums}} {% if nbAlbums>1 %} albums {% else %} album {% endif %} </a>
                 </h5>
             </div>
-            <img class"mx-auto d-block" style="border-radius: 60%;height:auto; width:200px; margin:auto; display:block;" src="{{leArtiste.image}}" alt="Card image">
+            <img class"mx-auto d-block" style="border-radius: 30%;height:auto; width:150px; margin:auto; display:block;" src="{{leArtiste.image}}" alt="Card image">
             <div class="card-body">
                 <p class="card-text">{{leArtiste.description|slice(0,170)|raw}}...</p>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                {% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe {% endif %}
+                    {% if leArtiste.type == 0 %} Artiste solo {% else %} Groupe {% endif %}
                 </li>
                 <li class="list-group-item"><a href="{{leArtiste.site}}">Site web</a></li>
             </ul>
