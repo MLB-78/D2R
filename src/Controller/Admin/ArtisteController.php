@@ -29,24 +29,32 @@ class ArtisteController extends AbstractController
         ]);
 
     }
+
      /**
-     * @Route("admin/artisteajout", name="admin_artistes_ajout",methods={"GET","POST"})
+     * @Route("admin/artiste/ajout", name="admin_artistes_ajout",methods={"GET","POST"})
+     * @Route("admin/artiste/modif{id}", name="admin_artistes_modif",methods={"GET","POST"})
      */
-    // problème avec la méthode post et la version php 8
-    public function ajoutArtiste(Request $request, EntityManagerInterface $manager)
+    public function ajoutModifArtiste(Artiste $artiste=null, Request $request, EntityManagerInterface $manager)
     {
-        $artiste=new Artiste();
+        if($artiste == null){
+            $artiste=new Artiste();
+            $mode = 'ajouté';
+        } else {
+            $mode = 'modifié';
+        }
         $form=$this->createForm(ArtisteType::class, $artiste);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) 
         {
             $manager->persist($artiste);
             $manager->flush();
+            $this->addFlash("success","L'artiste a bien été $mode");
             return $this->redirectToRoute('admin_artistes');
         }
-        return $this->render('admin/artiste/formAjoutArtiste.html.twig', [
+        return $this->render('admin/artiste/formAjoutModifArtiste.html.twig', [
             'formArtiste'=> $form->createView()
         ]);
 
     }
+
 }

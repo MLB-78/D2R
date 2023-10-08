@@ -5,7 +5,15 @@
 {% block body %}
 {# formulaire #}
 <div class="container">
-    <h1 class="pt-2 text-center" style="color:white">Ajouter un artiste</h1>
+    <h1 class="pt-2 text-center" style="color:white">
+        {% if app.request.attributes.get('_route')=="admin_artistes_ajout" %}
+            Ajouter
+        {% else %}
+            Modifier
+        {% endif %}
+    un artiste</h1>
+
+    
     <br>
 
     {{form_start(formArtiste)}}
@@ -26,7 +34,12 @@
             <a href="{{ path('admin_artistes') }}" class="btn btn-warning">Annuler</a>
         </div>
         <div class="col-auto">
-            <button type="submit" class="btn btn-success">Valider</button>
+            <input type="submit" class="btn btn-success" value={% if app.request.attributes.get('_route')=="admin_artistes_ajout" %}
+               "Ajouter l'artiste"
+            {% else %}
+                "Modifier l'artiste"
+            {% endif %}
+            >
         </div>
     </div>
 
