@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Artiste;
 use App\Form\ArtisteType;
 use App\Repository\ArtisteRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,13 +30,20 @@ class ArtisteController extends AbstractController
 
     }
      /**
-     * @Route("admin/artisteajout", name="admin_artistes_ajout",methods={"GET"})
+     * @Route("admin/artisteajout", name="admin_artistes_ajout",methods={"GET","POST"})
      */
     // problème avec la méthode post et la version php 8
-    public function ajoutArtiste()
+    public function ajoutArtiste(Request $request, EntityManagerInterface $manager)
     {
         $artiste=new Artiste();
         $form=$this->createForm(ArtisteType::class, $artiste);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) 
+        {
+            $manager->persist($artiste);
+            $manager->flush();
+            return $this->redirectToRoute('admin_artistes');
+        }
         return $this->render('admin/artiste/formAjoutArtiste.html.twig', [
             'formArtiste'=> $form->createView()
         ]);

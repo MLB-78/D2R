@@ -9,18 +9,18 @@
 
     <h1 class="pt-2 text-center" style="color:white">Fiche de l'album</h1>
     <hr>
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl">
+            <div class="col-sm-10 col-md-12 col-lg-3col-x2">
                 <div class="card mb-3">
-            <h3 class="card-header" style="color:red"> {{leAlbum.nom}} </h3>
+            <h3 class="card-header" style="color:blue"> {{leAlbum.nom}} </h3>
             <div class="row">
                 <div class="col-3 d-flex align-items-center mx-auto">
-                    <img class="mx-auto d-block" style="border-radius: 60%;height:auto; width:200px; margin:auto; display:block;" src="{{leAlbum.image}}" alt="Card image">
+                    <img class="mx-auto d-block" style="border-radius: 30%;height:auto; width:200px; margin:auto; display:block;" src="{{leAlbum.image}}" alt="Card image">
                 </div>
                 <div class="col">
                 
             <div class="card-body">
                 <h5 class="card-title"> 
-                <a href="{{path('ficheArtiste', {'id': leAlbum.artiste.id})}}" style='color:red;font-weight: bold;'class="badge badge-success"> {{leAlbum.artiste.nom}} </a>
+                <a href="{{path('ficheArtiste', {'id': leAlbum.artiste.id})}}" style='color:blue;font-weight: bold;'class="badge badge-success"> {{leAlbum.artiste.nom}} </a>
                 </h5>
 
                 <p class="card-text">{{leAlbum.date}}</p>
@@ -28,7 +28,7 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                   {% for leStyle in leAlbum.styles %}
-                    <span class="badge" style="background-color:{{leStyle.couleur}};"> {{leStyle.nom}} </span>
+                    <span class="badge" style="background-color: #ADD8E6; color: black;"> {{leStyle.nom}} </span>
                   {% endfor %}
                 </li>
                 <li>
@@ -56,7 +56,7 @@
   
     <tr class="table-active">
 
-      <td scope="row">{{ leMorceau.piste }}</td>
+      <td scope="row">00:14</td>
       <td>{{leMorceau.titre}}</td>
       <td>{{leMorceau.duree}}</td>
     </tr>

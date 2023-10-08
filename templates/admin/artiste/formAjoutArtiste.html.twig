@@ -3,9 +3,38 @@
 {% block title %}Ajouter un artiste{% endblock %}
 
 {% block body %}
+{# formulaire #}
+<div class="container">
+    <h1 class="pt-2 text-center" style="color:white">Ajouter un artiste</h1>
+    <br>
 
-<h1 class="pt-2 text-center" style="color:white">Ajouter un artiste</h1>
-<br>
-{{form(formArtiste)}}
+    {{form_start(formArtiste)}}
 
+    {{form_row(formArtiste.nom,{'label':"Nom de l'artiste"})}}
+    {{form_row(formArtiste.description)}}
+    <div class="row">
+        <div class="col">{{form_row(formArtiste.site)}}</div>
+        <div class="col">{{form_row(formArtiste.type)}}</div>
+    </div>
+
+    {{form_row(formArtiste.image)}}
+
+    <br>
+    {# Les boutons #}
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="{{ path('admin_artistes') }}" class="btn btn-warning">Annuler</a>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-success">Valider</button>
+        </div>
+    </div>
+
+
+
+
+
+
+    {{form_end(formArtiste)}}
+</div>
 {% endblock %}

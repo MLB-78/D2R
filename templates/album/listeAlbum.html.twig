@@ -10,17 +10,17 @@
         {% for leAlbum in lesAlbums %}
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl">
                 <div class="card mb-3">
-                    <h3 class="card-header" style="color:red">
-                        <a href="{{ path('ficheAlbum', {'id': leAlbum.id }) }}">{{ leAlbum.nom }}</a>
+                    <h3 class="card-header" style="color:blue">
+                        <a href="{{ path('ficheAlbum', {'id': leAlbum.id }) }}" style="color:blue">{{ leAlbum.nom }}</a>
                     </h3>
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="{{ path('ficheArtiste',{'id': leAlbum.artiste.id}) }}" style='color:red;font-weight: bold;' class="badge badge-success">
+                            <a href="{{ path('ficheArtiste',{'id': leAlbum.artiste.id}) }}" style='color:blue;font-weight: bold;' class="badge badge-success">
                                 {{ leAlbum.artiste.nom }}
                             </a>
                         </h5>
                     </div>
-                    <img class="mx-auto d-block" style="border-radius: 60%;height:auto; width:200px; margin:auto; display:block;" src="{{ leAlbum.image }}" alt="Card image">
+                    <img class="mx-auto d-block" style="border-radius: 30%;height:auto; width:200px; margin:auto; display:block;" src="{{ leAlbum.image }}" alt="Card image">
                     <div class="card-body">
                         <p class="card-text">{{ leAlbum.date }}</p>
                     </div>
