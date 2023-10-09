@@ -1,3 +1,8 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+# config/routes.yaml
+
+admin_artistes_suppression:
+    path: /admin/artistes/suppression/{id}
+    controller: App\Controller\Admin\ArtistesController::suppression

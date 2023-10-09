@@ -1,3 +1,8 @@
+*{
+
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
 body{
 
     background-color: rgb(13, 177, 210);
@@ -51,4 +56,10 @@ hr{
 
     border-radius: 4px;
     flex-grow: 1;
+}
+
+
+table {
+    background-color: white;
+    font-weight: bold;
 }

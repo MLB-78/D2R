@@ -56,5 +56,17 @@ class ArtisteController extends AbstractController
         ]);
 
     }
+     /**
+     * @Route("admin/artiste/supression{id}", name="admin_artistes_supression",methods={"DELETE"})
+     */
+    public function suppressionArtiste(Artiste $artiste,  EntityManagerInterface $manager)
+    {
+      
+        $manager->remove($artiste);
+        $manager->flush();
+        $this->addFlash("success","L'artiste a bien été supprimé");
+        return $this->redirectToRoute('admin_artistes');
+    
+    }
 
 }
