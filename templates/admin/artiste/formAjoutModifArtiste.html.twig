@@ -16,7 +16,7 @@
     
     <br>
 
-    {{form_start(formArtiste)}}
+    {{form_start(formArtiste,{'attr':{'novalidate':'novalidate'}})}}
 
     {{form_row(formArtiste.nom,{'label':"Nom de l'artiste"})}}
     {{form_row(formArtiste.description)}}

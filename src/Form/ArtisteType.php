@@ -19,12 +19,24 @@ class ArtisteType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'attr'=>[
-                    'placeholder'=>"saisir le nom de l'artiste"
+                    'placeholder'=>"Nom de l'artiste"
                 ]
             ])
-            ->add('description', TextareaType::class)
-            ->add('site', UrlType::class)
-            ->add('image', TextType::class)
+            ->add('description', TextareaType::class, [
+                'attr'=>[
+                    'placeholder'=>"Saisir une description"
+                ]
+            ])
+            ->add('site', UrlType::class, [
+                'attr' => [
+                    'placeholder' => "Exemple : https://www.amazon.fr/"
+                ]
+            ])
+            ->add('image', TextType::class, [
+                'attr'=>[
+                    'placeholder'=>"Saisir une URL d'image valide"
+                ]
+            ])
             ->add('type', ChoiceType::class , [
                 "choices"=>[
                     "Solo"=>0,
