@@ -57,7 +57,7 @@ class ArtisteController extends AbstractController
 
     }
      /**
-     * @Route("admin/artiste/supression{id}", name="admin_artistes_supression",methods={"DELETE"})
+     * @Route("admin/artiste/supression/{id}", name="admin_artistes_suppression",methods={"GET"})
      */
     public function suppressionArtiste(Artiste $artiste,  EntityManagerInterface $manager)
     {

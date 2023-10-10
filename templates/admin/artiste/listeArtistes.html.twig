@@ -48,15 +48,18 @@
                                 <img src="{{ asset('icone/modif.png') }}" style="width: 27px">
                             </a>
                             &nbsp;
+
                             <a href="#" 
-   class="btn btn-danger" 
-   id="btn" 
-   data-toggle="modal" 
-   data-target="#modalSimple" 
-   data-titre="Suppression d'un artiste"
-   data-message="Etes vous sur de vouloir supprimer l'artiste : {{leArtiste.nom}}"
-   data-lien="{{ path('admin_artistes_suppression', {'id' : leArtiste.id}) }}"
->
+                            class="btn btn-danger" 
+                            id="btn" 
+                            data-toggle="modal" 
+                            data-target="#modalSimple" 
+                            data-titre="Suppression d'un artiste"
+                            data-message="Etes vous sur de vouloir supprimer l'artiste : {{leArtiste.nom}}"
+                            data-libelle-bouton="Supprimer"
+                            data-lien="{{ path('admin_artistes_suppression', {'id' : leArtiste.id}) }}"
+                            >
+
 
                                 <img src="{{ asset('icone/supp.png') }}" style="width: 27px">
                             </a>
