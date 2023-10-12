@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use Faker\Factory;
 use App\Entity\Album;
+use App\Entity\Label;
 use App\Entity\Style;
 use App\Entity\Artiste;
 use App\Entity\Morceau;
@@ -114,3 +115,5 @@ class AppFixtures extends Fixture
     }
 
 }
+
+

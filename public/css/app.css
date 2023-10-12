@@ -63,4 +63,8 @@ table {
     background-color: white;
     font-weight: bold;
 }
+.badge {
+    padding-top: 0.28rem;
+    color: black;
+}
 
