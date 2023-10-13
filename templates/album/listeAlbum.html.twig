@@ -20,16 +20,23 @@
                             </a>
                         </h5>
                     </div>
-                    <img class="mx-auto d-block" style="border-radius: 30%;height:auto; width:200px; margin:auto; display:block;" src="{{ leAlbum.image }}" alt="Card image">
+                    <img class="mx-auto d-block" style="height:auto; width:200px; margin:auto; display:block;" src="{{ leAlbum.image }}" alt="Card image">
                     <div class="card-body">
                         <p class="card-text">{{ leAlbum.date }}</p>
                     </div>
                     <ul class="list-group list-group-flush">
+                        {# Style #}
                         <li class="list-group-item">
                             {% for leStyle in leAlbum.styles %}
                                 <span class="badge" style="background-color:{{ leStyle.couleur }};">{{ leStyle.nom }}</span>
                             {% endfor %}
                         </li>
+                        {# Label #}
+                        {# <li class="list-group-item">
+                            {% for leLabel in leAlbum.labels %}
+                                <span class="badge" style="background-color:{{ leStyle.couleur }};">{{ leLabel.nom }}</span>
+                            {% endfor %}
+                        </li> #}
                         {% set nb = leAlbum.morceaux|length %}
                         <li class="list-group-item">
                             {{ nb }} {% if nb > 1 %} morceaux {% else %} morceau {% endif %}

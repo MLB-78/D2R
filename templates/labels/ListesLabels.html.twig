@@ -4,41 +4,48 @@
 
 {% block body %}
 <div class="container">
-    <h1 class="pt-2 text-center" style="color:white">Listes des labels</h1>
+    <h1 class="pt-2 text-center" style="color: white">Listes des labels</h1>
     <hr>
     <div class="row pt-2">
-    {% for leLabel in lesLabels %}
-        {% set nbAlbums = leLabel.albums|length %}
-        
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl">
+        {% for leLabel in lesLabels %}
+            {% set nbAlbums = leLabel.albums|length %}
+            <div class="col-sm-12 col-md-6 col-lg-4">
                 <div class="card mb-3">
-                <h3 class="card-header" style="color:red"> <a href="{{ path('ficheLabel', {'id': leLabel.id })}}">{{ leLabel.nom }}</a> </h3>
-
-            <div class="card-body">
-            <pre>
-                {{ dump(nbAlbums,leLabel.id) }}
-            </pre>
-                <h5 class="card-title"> 
-                <a href="" style='color:blue;font-weight: bold;'class="badge badge-success">{{nbAlbums}} {% if nbAlbums>1 %} albums {% else %} album {% endif %} </a>
-                </h5>
+                    <h3 class="card-header" style="color: red">
+                        <a href="{{ path('ficheLabel', {'id': leLabel.id }) }}">{{ leLabel.nom }}</a>
+                    </h3>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="" style="color: blue; font-weight: bold;" class="badge badge-success">{{ nbAlbums }}
+                                {% if nbAlbums > 1 %}
+                                    albums
+                                {% else %}
+                                    album
+                                {% endif %}
+                            </a>
+                        </h5>
+                        <p class="card-text">{{ leLabel.description|slice(0, 200)|raw }}...</p>
+                        {# Keep the aspect ratio and set max-height for the image container #}
+                        <div style="max-height: 100px;">
+                            <img class="mx-auto d-block" id="img_label" style="max-width: 100%;" src="{{ leLabel.logo }}" alt="Card image">
+                        </div>
+                        <br>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                {% if leLabel.type == "Indépendant" %}
+                                    <span class="badge" style="background-color:{{ leStyle.couleur | default('#0eedd4') }};">{{ leLabel.type }}</span>
+                                {% else %}
+                                    <span class="badge" style="background-color:{{ leStyle.couleur | default('#ffa200') }};">{{ leLabel.type }}</span>
+                                {% endif %}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        {{ leLabel.annee }}
+                    </div>
+                </div>
             </div>
-            <img class"mx-auto d-block" style="border-radius: 30%;height:auto; width:150px; margin:auto; display:block;" src="{{leLabel.logo}}" alt="Card image">
-            <div class="card-body">
-                <p class="card-text">{{leLabel.description|slice(0,170)|raw}}...</p>
-            </div>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    {% if leLabel.type == "Indépendant" %}
-                        <a href="" class="badge badge-success">{{ leLabel.type }}</a>
-                    {% else %}
-                        <a href="" class="badge badge-success">{{ leLabel.type }}</a>
-                    {% endif %}
-                </li>
-
-            </ul>
-            </div>
-        </div>
-    {% endfor %}
-    </div>  
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

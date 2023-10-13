@@ -63,8 +63,7 @@ table {
     background-color: white;
     font-weight: bold;
 }
-.badge {
-    padding-top: 0.28rem;
-    color: black;
+#img_label {
+    height: 120px;
+    width: 190px;
 }
-

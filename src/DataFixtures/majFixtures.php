@@ -30,7 +30,7 @@ class majFixtures extends Fixture
         }
     $lesAlbums=$this->albumRepo->findAll();
     foreach ($lesAlbums as $album) {
-        $album  ->setLabel($this->getReference("label".mt_rand(0,$i)));
+        $album  ->setLabel($this->getReference("label".mt_rand(0,$i-1)));
     }
     $manager->flush();
     }
