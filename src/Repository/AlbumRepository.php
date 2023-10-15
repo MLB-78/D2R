@@ -58,6 +58,21 @@ class AlbumRepository extends ServiceEntityRepository
        ;
    }
 
+    /**
+    * @return Album[] Returns an array of Album objects
+    */
+   public function listeAlbumsCompletePaginee(): ?Query
+   {
+       return $this->createQueryBuilder('a')
+           ->select('a','s','art','m')
+           ->innerjoin('a.styles','s')
+           ->innerjoin('a.artiste','art')
+           ->innerjoin('a.morceaux','m')
+           ->orderBy('a.nom', 'ASC')
+           ->getQuery()
+       ;
+   }
+
 //    public function findOneBySomeField($value): ?Album
 //    {
 //        return $this->createQueryBuilder('a')

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\StyleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +22,13 @@ class Style
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez saisir un nom !")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Votre nom dois faire plus que {{ limit }} caractères",
+     *      maxMessage = "votre nom est plus long que {{ limit }} caractères"
+     * )
      */
     private $nom;
 
@@ -46,9 +54,10 @@ class Style
 
     public function setId(int $id): self
     {
-        $this->$id = $id;
+        $this->id = $id;
         return $this;
     }
+
 
     public function getNom(): ?string
     {
