@@ -54,9 +54,6 @@ class Label
         $this->albums = new ArrayCollection();
     }
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Album::class, inversedBy="labels")
-     */
 
     public function getId(): ?int
     {

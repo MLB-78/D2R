@@ -51,7 +51,8 @@ class Album
     private $styles;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Label::class, inversedBy="albums")
+     * @ORM\ManyToOne(targetEntity=Label::class, inversedBy="albums", fetch="EAGER")
+     * @ORM\JoinTable(name="album_label")
      */
     private $label;
 

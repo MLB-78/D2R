@@ -26,9 +26,16 @@
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                  {% for leStyle in leAlbum.styles %}
-                    <span class="badge" style="background-color: #ADD8E6; color: black;"> {{leStyle.nom}} </span>
-                  {% endfor %}
+                  <div class="style">
+                    {% for leStyle in leAlbum.styles %}
+                      <span class="badge" style="background-color:{{ leStyle.couleur }};"> {{leStyle.nom}} </span>
+                    {% endfor %}
+                  </div>
+                  <div class="label">
+                    {% for leStyle in leAlbum.styles %}
+                        <span class="badge" style="background-color:{{ leStyle.couleur }};">{{ leAlbum.label.nom }}</span>
+                    {% endfor %}
+                  </div>  
                 </li>
                 <li>
                 {% set nb = leAlbum.morceaux|length %}

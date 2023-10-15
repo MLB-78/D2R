@@ -12,20 +12,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AlbumController extends AbstractController
 {
-    /**
-     * @Route("/albums", name="albums",methods={"GET"})
-     */
-    public function listealbums(AlbumRepository $repo, PaginatorInterface $paginator,Request $request)
-    {
-        $albums = $pagination = $paginator->paginate(
-            $repo->listeAlbumsComplete(), /* query not result */
-            $request->query->getInt('page',1), /* Page number */
-            10 /* limit par page */
-        );
-        return $this->render('album/listeAlbum.html.twig', [
-            'lesAlbums'=> $albums
-        ]);
-    }
+   /**
+ * @Route("/albums", name="albums", methods={"GET"})
+ */
+public function listealbums(AlbumRepository $repo, PaginatorInterface $paginator, Request $request)
+{
+    $albums = $pagination = $paginator->paginate(
+        $repo->listeAlbumsComplete(), /* query not result */
+        $request->query->getInt('page', 1), /* Page number */
+        10 /* limit par page */
+    );
+
+    return $this->render('album/listeAlbum.html.twig', [
+        'lesAlbums' => $albums,
+    ]);
+}
+
 
      /**
      * @Route("/album/{id}", name="ficheAlbum",methods={"GET"})
