@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un style{% endblock %}
+
+{% block body %}
+{# formulaire #}
+<div class="container">
+    <h1 class="pt-2 text-center" style="color:white">
+        {% if app.request.attributes.get('_route')=="admin_styles_ajout" %}
+            Ajouter
+        {% else %}
+            Modifier
+        {% endif %}
+    un style</h1>
+
+    
+    <br>
+
+    {{form_start(formStyle,{'attr':{'novalidate':'novalidate'}})}}
+
+    {{form_row(formStyle.nom,{'label':"Nom du style"})}}
+    {{form_row(formStyle.couleur,{'label':"Couleur du Style"})}}
+    
+
+    <br>
+    {# Les boutons #}
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <a href="{{ path('admin_styles') }}" class="btn btn-warning">Annuler</a>
+        </div>
+        <div class="col-auto">
+            <input type="submit" class="btn btn-success" value={% if app.request.attributes.get('_route')=="admin_styles_ajout" %}
+               "Ajouter l'style"
+            {% else %}
+                "Modifier l'style"
+            {% endif %}
+            >
+        </div>
+    </div>
+
+
+
+
+
+
+    {{form_end(formStyle)}}
+</div>
+{% endblock %}
